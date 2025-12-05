@@ -172,7 +172,87 @@ export class CharacterDrawer {
         this.ctx.closePath();
         this.ctx.fill();
         break;
+        
+      case 'beast':
+        // 绘制野兽敌人
+        this.ctx.fillStyle = '#8B4513';
+        this.ctx.fillRect(0, height * 0.4, width, height * 0.6);
+        
+        this.ctx.fillStyle = '#A0522D';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.3, width * 0.3, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 绘制野兽的眼睛
+        this.ctx.fillStyle = '#333';
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.4, height * 0.25, width * 0.08, 0, Math.PI * 2);
+        this.ctx.arc(width * 0.6, height * 0.25, width * 0.08, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 绘制野兽的牙齿
+        this.ctx.fillStyle = '#FFF';
+        this.ctx.fillRect(width * 0.4, height * 0.35, width * 0.05, height * 0.05);
+        this.ctx.fillRect(width * 0.55, height * 0.35, width * 0.05, height * 0.05);
+        break;
+        
+      case 'goon':
+        // 绘制小喽啰敌人
+        this.ctx.fillStyle = '#2F4F4F';
+        this.ctx.fillRect(0, height * 0.4, width, height * 0.6);
+        
+        this.ctx.fillStyle = '#FFDAB9';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.3, width * 0.3, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 绘制小喽啰的头巾
+        this.ctx.fillStyle = '#DC143C';
+        this.ctx.fillRect(width * 0.1, height * 0.15, width * 0.8, height * 0.1);
+        this.ctx.fillRect(width * 0.4, height * 0.05, width * 0.2, height * 0.1);
+        break;
     }
+    
+    // 恢复上下文状态
+    this.ctx.restore();
+  }
+  
+  // 绘制龙珠
+  drawDragonBall(x: number, y: number, width: number, height: number): void {
+    // 保存上下文状态
+    this.ctx.save();
+    
+    // 设置绘制位置
+    this.ctx.translate(x, y);
+    
+    // 绘制龙珠的金色外壳
+    this.ctx.fillStyle = '#FFD700';
+    this.ctx.beginPath();
+    this.ctx.arc(width / 2, height / 2, width / 2, 0, Math.PI * 2);
+    this.ctx.fill();
+    
+    // 绘制龙珠的高光
+    this.ctx.fillStyle = '#FFF';
+    this.ctx.beginPath();
+    this.ctx.arc(width * 0.3, height * 0.3, width * 0.1, 0, Math.PI * 2);
+    this.ctx.fill();
+    
+    // 绘制龙珠的星星
+    this.ctx.fillStyle = '#FF0000';
+    this.ctx.beginPath();
+    // 绘制四星龙珠的星星
+    this.ctx.moveTo(width / 2, height * 0.2);
+    this.ctx.lineTo(width * 0.55, height * 0.4);
+    this.ctx.lineTo(width * 0.7, height * 0.45);
+    this.ctx.lineTo(width * 0.6, height * 0.6);
+    this.ctx.lineTo(width * 0.65, height * 0.75);
+    this.ctx.lineTo(width * 0.5, height * 0.7);
+    this.ctx.lineTo(width * 0.35, height * 0.75);
+    this.ctx.lineTo(width * 0.4, height * 0.6);
+    this.ctx.lineTo(width * 0.3, height * 0.45);
+    this.ctx.lineTo(width * 0.45, height * 0.4);
+    this.ctx.closePath();
+    this.ctx.fill();
     
     // 恢复上下文状态
     this.ctx.restore();

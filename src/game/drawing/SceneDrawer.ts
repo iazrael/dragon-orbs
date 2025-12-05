@@ -55,7 +55,8 @@ export class SceneDrawer {
     for (let i = 0; i < 8; i++) {
       const x = Math.random() * width;
       const y = height * 0.7;
-      this.drawTree(x, y, 30 + Math.random() * 40);
+      const size = 30 + Math.random() * 40;
+      this.drawTree(x, y, size, size * 2);
     }
   }
   
@@ -163,20 +164,7 @@ export class SceneDrawer {
     this.ctx.fill();
   }
   
-  // 绘制树木
-  private drawTree(x: number, y: number, size: number): void {
-    // 绘制树干
-    this.ctx.fillStyle = '#8B4513';
-    this.ctx.fillRect(x - size * 0.1, y - size * 0.8, size * 0.2, size * 0.8);
-    
-    // 绘制树叶
-    this.ctx.fillStyle = '#228B22';
-    this.ctx.beginPath();
-    this.ctx.arc(x, y - size * 0.8, size * 0.5, 0, Math.PI * 2);
-    this.ctx.arc(x - size * 0.3, y - size * 0.6, size * 0.5, 0, Math.PI * 2);
-    this.ctx.arc(x + size * 0.3, y - size * 0.6, size * 0.5, 0, Math.PI * 2);
-    this.ctx.fill();
-  }
+
   
   // 绘制珊瑚
   private drawCoral(x: number, y: number, size: number): void {
@@ -196,6 +184,43 @@ export class SceneDrawer {
     this.ctx.lineTo(x, y - size * 0.7);
     this.ctx.lineTo(x + size * 0.2, y - size * 0.9);
     this.ctx.closePath();
+    this.ctx.fill();
+  }
+  
+  // 绘制地面
+  drawGround(x: number, y: number, width: number, height: number): void {
+    this.ctx.fillStyle = '#228B22';
+    this.ctx.fillRect(x, y, width, height);
+    
+    // 绘制草地纹理
+    this.ctx.fillStyle = '#32CD32';
+    for (let i = 0; i < width; i += 10) {
+      this.ctx.fillRect(x + i, y, 5, height * 0.2);
+    }
+  }
+  
+  // 绘制树木
+  drawTree(x: number, y: number, width: number, height: number): void {
+    // 绘制树干
+    this.ctx.fillStyle = '#8B4513';
+    this.ctx.fillRect(x + width * 0.25, y, width * 0.5, height * 0.4);
+    
+    // 绘制树叶
+    this.ctx.fillStyle = '#228B22';
+    this.ctx.beginPath();
+    this.ctx.arc(x + width / 2, y - height * 0.2, width * 0.7, 0, Math.PI * 2);
+    this.ctx.arc(x, y - height * 0.1, width * 0.5, 0, Math.PI * 2);
+    this.ctx.arc(x + width, y - height * 0.1, width * 0.5, 0, Math.PI * 2);
+    this.ctx.fill();
+  }
+  
+  // 绘制石头
+  drawStone(x: number, y: number, width: number, height: number): void {
+    this.ctx.fillStyle = '#696969';
+    this.ctx.beginPath();
+    this.ctx.arc(x + width * 0.3, y + height * 0.3, width * 0.3, 0, Math.PI * 2);
+    this.ctx.arc(x + width * 0.7, y + height * 0.4, width * 0.3, 0, Math.PI * 2);
+    this.ctx.arc(x + width * 0.5, y + height * 0.7, width * 0.3, 0, Math.PI * 2);
     this.ctx.fill();
   }
   

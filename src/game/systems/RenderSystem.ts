@@ -77,6 +77,60 @@ export class RenderSystem extends System {
           96,
           false // 默认朝左
         );
+      } else if (entityName.includes('beast')) {
+        this.characterDrawer.drawEnemy(
+          transform.position.x,
+          transform.position.y,
+          50,
+          50,
+          'beast',
+          false // 默认朝左
+        );
+      } else if (entityName.includes('goon')) {
+        this.characterDrawer.drawEnemy(
+          transform.position.x,
+          transform.position.y,
+          60,
+          80,
+          'goon',
+          false // 默认朝左
+        );
+      } else if (entityName.includes('dragon-ball')) {
+        this.characterDrawer.drawDragonBall(
+          transform.position.x,
+          transform.position.y,
+          40,
+          40
+        );
+      } else if (entityName.includes('ground')) {
+        this.sceneDrawer.drawGround(
+          transform.position.x,
+          transform.position.y,
+          800,
+          50
+        );
+      } else if (entityName.includes('tree')) {
+        this.sceneDrawer.drawTree(
+          transform.position.x,
+          transform.position.y,
+          60,
+          120
+        );
+      } else if (entityName.includes('stone')) {
+        this.sceneDrawer.drawStone(
+          transform.position.x,
+          transform.position.y,
+          40,
+          30
+        );
+      } else if (entityName.includes('platform')) {
+        const width = entityName.includes('platform-') ? 150 : 120;
+        this.sceneDrawer.drawPlatform(
+          transform.position.x,
+          transform.position.y,
+          width,
+          20
+        );
       } else if (entityName.includes('enemy')) {
         this.characterDrawer.drawEnemy(
           transform.position.x,
