@@ -16,7 +16,7 @@ export class PhysicsSystem extends System {
   }
   
   // 更新物理系统
-  update(_deltaTime: number): void {
+  update(deltaTime: number): void {
     // 获取所有具有Transform和Collider组件的实体
     const entities = this.world.getEntitiesWithComponents(['transform', 'collider']);
     
@@ -30,12 +30,17 @@ export class PhysicsSystem extends System {
       }
       
       // 应用重力（简化版，只考虑y轴）
-      transform.position.y += this.gravity;
+      transform.velocity.y += this.gravity * deltaTime;
       
       // 限制最大下落速度
-      if (transform.position.y > this.maxFallSpeed) {
-        transform.position.y = this.maxFallSpeed;
+      if (transform.velocity.y > this.maxFallSpeed) {
+        transform.velocity.y = this.maxFallSpeed;
       }
+      
+      // 根据速度更新位置
+      transform.position.x += transform.velocity.x * deltaTime;
+      transform.position.y += transform.velocity.y * deltaTime;
+      transform.position.z += transform.velocity.z * deltaTime;
       
       // 边界检测（防止实体离开屏幕）
       this.handleBoundaryCollision(transform, collider);
@@ -48,7 +53,7 @@ export class PhysicsSystem extends System {
   // 处理边界碰撞
   private handleBoundaryCollision(transform: Transform, collider: Collider): void {
     const canvasHeight = 600; // 假设画布高度为600
-    const canvasWidth = 800; // 假设画布宽度为800
+    const canvasWidth = 1500; // 扩大画布宽度以适应关卡设计
     
     // 获取碰撞体尺寸
     const colliderWidth = collider.colliderType === ColliderType.BOX ? collider.params.width : collider.params.radius * 2;
@@ -57,21 +62,25 @@ export class PhysicsSystem extends System {
     // 底部边界
     if (transform.position.y + colliderHeight > canvasHeight) {
       transform.position.y = canvasHeight - colliderHeight;
+      transform.velocity.y = 0; // 触底后速度归零
     }
     
     // 顶部边界
     if (transform.position.y < 0) {
       transform.position.y = 0;
+      transform.velocity.y = 0; // 触顶后速度归零
     }
     
     // 左侧边界
     if (transform.position.x < 0) {
       transform.position.x = 0;
+      transform.velocity.x = 0; // 触左墙后速度归零
     }
     
     // 右侧边界
     if (transform.position.x + colliderWidth > canvasWidth) {
       transform.position.x = canvasWidth - colliderWidth;
+      transform.velocity.x = 0; // 触右墙后速度归零
     }
   }
   

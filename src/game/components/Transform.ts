@@ -1,6 +1,6 @@
 import { Component } from '../../ecs/Component';
 
-// 变换组件，用于管理实体的位置、旋转和缩放
+// 变换组件，用于管理实体的位置、旋转、缩放和速度
 export class Transform extends Component {
   // 组件类型标识
   readonly type: string = 'transform';
@@ -14,11 +14,15 @@ export class Transform extends Component {
   // 缩放因子
   scale: { x: number; y: number; z: number };
   
+  // 速度向量
+  velocity: { x: number; y: number; z: number };
+  
   // 构造函数
   constructor(
     position: { x: number; y: number; z?: number } = { x: 0, y: 0, z: 0 },
     rotation: { x: number; y: number; z?: number } = { x: 0, y: 0, z: 0 },
-    scale: { x: number; y: number; z?: number } = { x: 1, y: 1, z: 1 }
+    scale: { x: number; y: number; z?: number } = { x: 1, y: 1, z: 1 },
+    velocity: { x: number; y: number; z?: number } = { x: 0, y: 0, z: 0 }
   ) {
     super();
     this.position = {
@@ -36,6 +40,11 @@ export class Transform extends Component {
       y: scale.y,
       z: scale.z || 1
     };
+    this.velocity = {
+      x: velocity.x,
+      y: velocity.y,
+      z: velocity.z || 0
+    };
   }
   
   // 重置变换组件
@@ -43,5 +52,6 @@ export class Transform extends Component {
     this.position = { x: 0, y: 0, z: 0 };
     this.rotation = { x: 0, y: 0, z: 0 };
     this.scale = { x: 1, y: 1, z: 1 };
+    this.velocity = { x: 0, y: 0, z: 0 };
   }
 }

@@ -5,7 +5,7 @@ import { PhysicsSystem } from '../game/systems/PhysicsSystem';
 import { InputSystem } from '../game/systems/InputSystem';
 import { AISystem } from '../game/systems/AISystem';
 import { AnimationSystem } from '../game/systems/AnimationSystem';
-import { Stage1 } from '../game/stages/Stage1';
+import { Stage5 } from '../game/stages/Stage5';
 
 const GameCanvas: React.FC = () => {
   // Canvas引用
@@ -25,8 +25,8 @@ const GameCanvas: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    // 设置画布尺寸
-    canvas.width = 800;
+    // 设置画布尺寸（扩大宽度以适应关卡设计）
+    canvas.width = 1500;
     canvas.height = 600;
     
     // 创建游戏世界
@@ -46,9 +46,9 @@ const GameCanvas: React.FC = () => {
     world.addSystem(aiSystem);
     world.addSystem(animationSystem);
     
-    // 创建并初始化第一个关卡
-    const stage1 = new Stage1(world);
-    stage1.init();
+    // 创建并初始化第五个关卡（直接测试Stage5）
+    const stage5 = new Stage5(world);
+    stage5.init();
     
     // 开始游戏循环
     let lastTime = Date.now();
@@ -58,14 +58,14 @@ const GameCanvas: React.FC = () => {
       lastTime = currentTime;
       
       // 更新关卡
-      stage1.update(deltaTime);
+      stage5.update(deltaTime);
       
       // 更新世界（所有系统）
       world.update(deltaTime);
       
       // 检查关卡是否完成
-      if (stage1.isComplete()) {
-        console.log('关卡1完成！进入下一关');
+      if (stage5.isComplete()) {
+        console.log('关卡5完成！进入下一关');
         // 这里可以切换到下一个关卡
       }
       
@@ -92,11 +92,11 @@ const GameCanvas: React.FC = () => {
   }, []);
   
   return (
-    <div className="flex justify-center items-center h-screen bg-black">
+    <div className="flex justify-center items-center h-screen bg-black overflow-x-auto">
       <canvas
         ref={canvasRef}
         className="border-2 border-white"
-        style={{ width: '800px', height: '600px' }}
+        style={{ width: '100%', maxWidth: '1500px', height: '600px' }}
       />
     </div>
   );
