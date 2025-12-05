@@ -82,7 +82,7 @@ export class Stage1 extends Stage {
   }
   
   // 更新关卡
-  update(deltaTime: number): void {
+  update(_deltaTime: number): void {
     // 检查玩家是否与布玛相遇
     this.checkPlayerBulmaEncounter();
     

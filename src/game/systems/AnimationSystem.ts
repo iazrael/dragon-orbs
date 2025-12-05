@@ -13,7 +13,7 @@ export class AnimationSystem extends System {
   }
   
   // 更新动画系统
-  update(deltaTime: number): void {
+  update(_deltaTime: number): void {
     // 增加帧计数器
     this.frameCount++;
     

@@ -33,7 +33,7 @@ export class RenderSystem extends System {
   }
   
   // 更新渲染系统
-  update(deltaTime: number): void {
+  update(_deltaTime: number): void {
     // 清空画布
     this.ctx.clearRect(0, 0, this.width, this.height);
     
@@ -83,6 +83,7 @@ export class RenderSystem extends System {
           transform.position.y,
           64,
           96,
+          'basic',
           false // 默认朝左
         );
       } else if (entityName.includes('boss')) {
@@ -91,8 +92,8 @@ export class RenderSystem extends System {
           transform.position.y,
           80,
           120,
-          false, // 默认朝左
-          'boss'
+          'boss',
+          false // 默认朝左
         );
       }
     });

@@ -11,7 +11,7 @@ export class AISystem extends System {
   }
   
   // 更新AI系统
-  update(deltaTime: number): void {
+  update(_deltaTime: number): void {
     // 获取所有具有Controller组件的实体
     const entities = this.world.getEntitiesWithComponents(['controller']);
     

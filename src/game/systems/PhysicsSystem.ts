@@ -16,7 +16,7 @@ export class PhysicsSystem extends System {
   }
   
   // 更新物理系统
-  update(deltaTime: number): void {
+  update(_deltaTime: number): void {
     // 获取所有具有Transform和Collider组件的实体
     const entities = this.world.getEntitiesWithComponents(['transform', 'collider']);
     
@@ -83,10 +83,10 @@ export class PhysicsSystem extends System {
         const entityA = entities[i];
         const entityB = entities[j];
         
-        const transformA = entityA.getComponent<Transform>('transform');
-        const colliderA = entityA.getComponent<Collider>('collider');
-        const transformB = entityB.getComponent<Transform>('transform');
-        const colliderB = entityB.getComponent<Collider>('collider');
+        const transformA = entityA.getComponent('transform');
+        const colliderA = entityA.getComponent('collider');
+        const transformB = entityB.getComponent('transform');
+        const colliderB = entityB.getComponent('collider');
         
         if (!transformA || !colliderA || !transformB || !colliderB || !colliderA.enabled || !colliderB.enabled) {
           continue;

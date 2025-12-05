@@ -28,7 +28,7 @@ export class InputSystem extends System {
   }
   
   // 更新输入系统
-  update(deltaTime: number): void {
+  update(_deltaTime: number): void {
     // 获取所有具有Controller组件的实体
     const entities = this.world.getEntitiesWithComponents(['controller']);
     
