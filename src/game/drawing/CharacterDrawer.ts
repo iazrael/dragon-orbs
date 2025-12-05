@@ -689,6 +689,227 @@ export class CharacterDrawer {
         this.ctx.fillStyle = '#808080';
         this.ctx.fillRect(width * 0.35, height * 0.3, width * 0.3, height * 0.2); // 胸甲
         break;
+        
+      case 'mech-warrior':
+        // 绘制机甲战士
+        // 1. 绘制机甲身体
+        this.ctx.fillStyle = '#808080';
+        this.ctx.fillRect(width * 0.25, height * 0.3, width * 0.5, height * 0.5);
+        
+        // 2. 绘制机甲腿部
+        this.ctx.fillStyle = '#696969';
+        this.ctx.fillRect(width * 0.3, height * 0.8, width * 0.15, height * 0.2);
+        this.ctx.fillRect(width * 0.55, height * 0.8, width * 0.15, height * 0.2);
+        
+        // 3. 绘制机甲手臂
+        this.ctx.fillStyle = '#696969';
+        this.ctx.fillRect(width * 0.1, height * 0.4, width * 0.15, height * 0.3);
+        this.ctx.fillRect(width * 0.75, height * 0.4, width * 0.15, height * 0.3);
+        
+        // 4. 绘制机甲头部
+        this.ctx.fillStyle = '#A9A9A9';
+        this.ctx.fillRect(width * 0.3, height * 0.15, width * 0.4, height * 0.15);
+        
+        // 5. 绘制机甲天线
+        this.ctx.fillStyle = '#FF4500';
+        this.ctx.fillRect(width * 0.48, height * 0.1, width * 0.04, height * 0.05);
+        
+        // 6. 绘制机甲眼睛
+        this.ctx.fillStyle = '#00FF00';
+        this.ctx.fillRect(width * 0.35, height * 0.2, width * 0.1, height * 0.05);
+        this.ctx.fillRect(width * 0.55, height * 0.2, width * 0.1, height * 0.05);
+        
+        // 7. 绘制机甲胸甲
+        this.ctx.fillStyle = '#FFD700';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.5, width * 0.1, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 8. 绘制机甲武器（导弹发射器）
+        this.ctx.fillStyle = '#696969';
+        this.ctx.fillRect(width * 0.85, height * 0.4, width * 0.2, height * 0.1);
+        
+        // 导弹
+        this.ctx.fillStyle = '#FF0000';
+        for (let i = 0; i < 3; i++) {
+          this.ctx.fillRect(width * 0.85, height * 0.4 + i * 0.04, width * 0.2, height * 0.03);
+        }
+        break;
+        
+      case 'black-mamba':
+        // 绘制黑元帅
+        // 1. 绘制身体
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(width * 0.25, height * 0.4, width * 0.5, height * 0.4);
+        
+        // 2. 绘制腿部
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(width * 0.3, height * 0.8, width * 0.15, height * 0.2);
+        this.ctx.fillRect(width * 0.55, height * 0.8, width * 0.15, height * 0.2);
+        
+        // 3. 绘制手臂
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(width * 0.15, height * 0.45, width * 0.1, height * 0.3);
+        this.ctx.fillRect(width * 0.75, height * 0.45, width * 0.1, height * 0.3);
+        
+        // 4. 绘制头部
+        this.ctx.fillStyle = '#FFDAB9';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.3, width * 0.3, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 5. 绘制帽子
+        this.ctx.fillStyle = '#000080';
+        this.ctx.fillRect(width * 0.2, height * 0.2, width * 0.6, height * 0.15);
+        
+        this.ctx.fillStyle = '#FFD700';
+        this.ctx.fillRect(width * 0.3, height * 0.15, width * 0.4, height * 0.05);
+        
+        // 6. 绘制面部特征
+        // 眼睛
+        this.ctx.fillStyle = '#000';
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.4, height * 0.25, width * 0.05, 0, Math.PI * 2);
+        this.ctx.arc(width * 0.6, height * 0.25, width * 0.05, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 嘴巴
+        this.ctx.strokeStyle = '#000';
+        this.ctx.lineWidth = 2;
+        this.ctx.beginPath();
+        this.ctx.moveTo(width * 0.45, height * 0.35);
+        this.ctx.lineTo(width * 0.55, height * 0.35);
+        this.ctx.stroke();
+        
+        // 7. 绘制服装
+        this.ctx.fillStyle = '#000080';
+        this.ctx.fillRect(width * 0.25, height * 0.4, width * 0.5, height * 0.4); // 外套
+        
+        // 8. 绘制披风
+        this.ctx.fillStyle = '#8B0000';
+        this.ctx.beginPath();
+        this.ctx.moveTo(width * 0.25, height * 0.4);
+        this.ctx.lineTo(width * 0.1, height * 1.0);
+        this.ctx.lineTo(width * 0.35, height * 1.0);
+        this.ctx.closePath();
+        this.ctx.fill();
+        
+        this.ctx.beginPath();
+        this.ctx.moveTo(width * 0.75, height * 0.4);
+        this.ctx.lineTo(width * 0.9, height * 1.0);
+        this.ctx.lineTo(width * 0.65, height * 1.0);
+        this.ctx.closePath();
+        this.ctx.fill();
+        
+        // 9. 绘制徽章
+        this.ctx.fillStyle = '#FFD700';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.5, width * 0.08, 0, Math.PI * 2);
+        this.ctx.fill();
+        break;
+        
+      case 'red-ribbon-scientist':
+        // 绘制红缎带军团科学家
+        // 1. 绘制身体
+        this.ctx.fillStyle = '#FFFFFF';
+        this.ctx.fillRect(width * 0.25, height * 0.4, width * 0.5, height * 0.4);
+        
+        // 2. 绘制腿部
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(width * 0.3, height * 0.8, width * 0.15, height * 0.2);
+        this.ctx.fillRect(width * 0.55, height * 0.8, width * 0.15, height * 0.2);
+        
+        // 3. 绘制手臂
+        this.ctx.fillStyle = '#FFFFFF';
+        this.ctx.fillRect(width * 0.15, height * 0.45, width * 0.1, height * 0.3);
+        this.ctx.fillRect(width * 0.75, height * 0.45, width * 0.1, height * 0.3);
+        
+        // 4. 绘制头部
+        this.ctx.fillStyle = '#FFDAB9';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.3, width * 0.3, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 5. 绘制头发
+        this.ctx.fillStyle = '#2F4F4F';
+        this.ctx.fillRect(width * 0.2, height * 0.15, width * 0.6, height * 0.15);
+        
+        // 6. 绘制眼镜
+        this.ctx.strokeStyle = '#000';
+        this.ctx.lineWidth = 2;
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.4, height * 0.25, width * 0.08, 0, Math.PI * 2);
+        this.ctx.arc(width * 0.6, height * 0.25, width * 0.08, 0, Math.PI * 2);
+        this.ctx.stroke();
+        
+        this.ctx.beginPath();
+        this.ctx.moveTo(width * 0.48, height * 0.25);
+        this.ctx.lineTo(width * 0.52, height * 0.25);
+        this.ctx.stroke();
+        
+        // 7. 绘制面部特征
+        // 嘴巴
+        this.ctx.strokeStyle = '#000';
+        this.ctx.lineWidth = 2;
+        this.ctx.beginPath();
+        this.ctx.moveTo(width * 0.45, height * 0.35);
+        this.ctx.lineTo(width * 0.55, height * 0.35);
+        this.ctx.stroke();
+        
+        // 8. 绘制实验服
+        this.ctx.fillStyle = '#FFFFFF';
+        this.ctx.fillRect(width * 0.25, height * 0.4, width * 0.5, height * 0.4);
+        
+        // 9. 绘制红缎带标志
+        this.ctx.fillStyle = '#FF0000';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.6, width * 0.05, 0, Math.PI * 2);
+        this.ctx.fill();
+        break;
+        
+      case 'red-ribbon-robot':
+        // 绘制红缎带军团机器人
+        // 1. 绘制机器人身体
+        this.ctx.fillStyle = '#C0C0C0';
+        this.ctx.fillRect(width * 0.3, height * 0.3, width * 0.4, height * 0.5);
+        
+        // 2. 绘制机器人腿部
+        this.ctx.fillStyle = '#A9A9A9';
+        this.ctx.fillRect(width * 0.35, height * 0.8, width * 0.1, height * 0.2);
+        this.ctx.fillRect(width * 0.55, height * 0.8, width * 0.1, height * 0.2);
+        
+        // 3. 绘制机器人手臂
+        this.ctx.fillStyle = '#A9A9A9';
+        this.ctx.fillRect(width * 0.15, height * 0.4, width * 0.15, height * 0.2);
+        this.ctx.fillRect(width * 0.7, height * 0.4, width * 0.15, height * 0.2);
+        
+        // 4. 绘制机器人头部
+        this.ctx.fillStyle = '#D3D3D3';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.2, width * 0.2, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 5. 绘制机器人眼睛
+        this.ctx.fillStyle = '#FF0000';
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.45, height * 0.18, width * 0.04, 0, Math.PI * 2);
+        this.ctx.arc(width * 0.55, height * 0.18, width * 0.04, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 6. 绘制机器人天线
+        this.ctx.fillStyle = '#FF4500';
+        this.ctx.fillRect(width * 0.49, height * 0.1, width * 0.02, height * 0.1);
+        
+        // 7. 绘制机器人胸部面板
+        this.ctx.fillStyle = '#808080';
+        this.ctx.fillRect(width * 0.4, height * 0.4, width * 0.2, height * 0.2);
+        
+        // 8. 绘制红缎带标志
+        this.ctx.fillStyle = '#FF0000';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.5, width * 0.05, 0, Math.PI * 2);
+        this.ctx.fill();
+        break;
     }
     
     // 恢复上下文状态
