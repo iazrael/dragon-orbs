@@ -5,7 +5,7 @@ import { PhysicsSystem } from '../game/systems/PhysicsSystem';
 import { InputSystem } from '../game/systems/InputSystem';
 import { AISystem } from '../game/systems/AISystem';
 import { AnimationSystem } from '../game/systems/AnimationSystem';
-import { Stage5 } from '../game/stages/Stage5';
+import { Stage6 } from '../game/stages/Stage6';
 
 const GameCanvas: React.FC = () => {
   // Canvas引用
@@ -46,9 +46,9 @@ const GameCanvas: React.FC = () => {
     world.addSystem(aiSystem);
     world.addSystem(animationSystem);
     
-    // 创建并初始化第五个关卡（直接测试Stage5）
-    const stage5 = new Stage5(world);
-    stage5.init();
+    // 创建并初始化第六个关卡（直接测试Stage6）
+    const stage6 = new Stage6(world);
+    stage6.init();
     
     // 开始游戏循环
     let lastTime = Date.now();
@@ -58,14 +58,14 @@ const GameCanvas: React.FC = () => {
       lastTime = currentTime;
       
       // 更新关卡
-      stage5.update(deltaTime);
+      stage6.update(deltaTime);
       
       // 更新世界（所有系统）
       world.update(deltaTime);
       
       // 检查关卡是否完成
-      if (stage5.isComplete()) {
-        console.log('关卡5完成！进入下一关');
+      if (stage6.isComplete()) {
+        console.log('关卡6完成！进入下一关');
         // 这里可以切换到下一个关卡
       }
       
