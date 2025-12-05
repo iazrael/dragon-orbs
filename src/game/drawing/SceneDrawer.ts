@@ -298,6 +298,101 @@ export class SceneDrawer {
     this.ctx.fill();
   }
   
+  // 绘制火山岩石
+  drawVolcanicRock(x: number, y: number, width: number, height: number): void {
+    this.ctx.fillStyle = '#8B0000';
+    this.ctx.beginPath();
+    this.ctx.moveTo(x + width * 0.5, y);
+    this.ctx.lineTo(x + width * 0.8, y + height * 0.3);
+    this.ctx.lineTo(x + width, y + height);
+    this.ctx.lineTo(x, y + height);
+    this.ctx.lineTo(x + width * 0.2, y + height * 0.3);
+    this.ctx.closePath();
+    this.ctx.fill();
+    
+    // 添加火山岩石纹理（熔岩裂缝）
+    this.ctx.fillStyle = '#FF4500';
+    for (let i = 0; i < 3; i++) {
+      const crackX = x + Math.random() * width;
+      const crackY = y + Math.random() * height;
+      this.ctx.beginPath();
+      this.ctx.arc(crackX, crackY, width * 0.05, 0, Math.PI * 2);
+      this.ctx.fill();
+    }
+  }
+  
+  // 绘制熔岩池
+  drawLavaPool(x: number, y: number, width: number, height: number): void {
+    // 绘制熔岩池底部
+    this.ctx.fillStyle = '#8B0000';
+    this.ctx.fillRect(x, y, width, height);
+    
+    // 绘制熔岩表面
+    this.ctx.fillStyle = '#FF4500';
+    this.ctx.fillRect(x, y, width, height * 0.5);
+    
+    // 添加熔岩冒泡效果
+    this.ctx.fillStyle = '#FFD700';
+    for (let i = 0; i < 5; i++) {
+      const bubbleX = x + Math.random() * width;
+      const bubbleY = y + Math.random() * (height * 0.5);
+      this.ctx.beginPath();
+      this.ctx.arc(bubbleX, bubbleY, width * 0.03, 0, Math.PI * 2);
+      this.ctx.fill();
+    }
+  }
+  
+  // 绘制火山平台
+  drawVolcanicPlatform(x: number, y: number, width: number, height: number): void {
+    this.ctx.fillStyle = '#8B0000';
+    this.ctx.fillRect(x, y, width, height);
+    
+    // 添加平台边缘效果
+    this.ctx.fillStyle = '#FF4500';
+    this.ctx.fillRect(x, y, width, height * 0.2);
+    
+    // 添加平台纹理
+    this.ctx.fillStyle = '#A52A2A';
+    for (let i = 0; i < width; i += 15) {
+      this.ctx.fillRect(x + i, y, 10, height);
+    }
+  }
+  
+  // 绘制火焰柱
+  drawFirePillar(x: number, y: number, width: number, height: number): void {
+    // 绘制火焰底部
+    this.ctx.fillStyle = '#8B0000';
+    this.ctx.fillRect(x + width * 0.3, y + height * 0.7, width * 0.4, height * 0.3);
+    
+    // 绘制火焰主体
+    this.ctx.fillStyle = '#FF4500';
+    this.ctx.beginPath();
+    this.ctx.moveTo(x + width * 0.5, y);
+    this.ctx.lineTo(x, y + height * 0.7);
+    this.ctx.lineTo(x + width, y + height * 0.7);
+    this.ctx.closePath();
+    this.ctx.fill();
+    
+    // 绘制火焰顶部
+    this.ctx.fillStyle = '#FFD700';
+    this.ctx.beginPath();
+    this.ctx.moveTo(x + width * 0.5, y);
+    this.ctx.lineTo(x + width * 0.2, y + height * 0.3);
+    this.ctx.lineTo(x + width * 0.8, y + height * 0.3);
+    this.ctx.closePath();
+    this.ctx.fill();
+    
+    // 添加火焰闪烁效果
+    this.ctx.fillStyle = '#FFF';
+    for (let i = 0; i < 3; i++) {
+      const sparkX = x + Math.random() * width;
+      const sparkY = y + Math.random() * (height * 0.5);
+      this.ctx.beginPath();
+      this.ctx.arc(sparkX, sparkY, width * 0.02, 0, Math.PI * 2);
+      this.ctx.fill();
+    }
+  }
+  
   // 绘制障碍物
   drawObstacle(x: number, y: number, width: number, height: number, type: string = 'rock'): void {
     switch (type) {

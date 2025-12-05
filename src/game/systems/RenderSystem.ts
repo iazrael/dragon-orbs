@@ -122,6 +122,33 @@ export class RenderSystem extends System {
           'sandworm',
           false // 默认朝左
         );
+      } else if (entityName.includes('fire-monster')) {
+        this.characterDrawer.drawEnemy(
+          transform.position.x,
+          transform.position.y,
+          70,
+          80,
+          'fire-monster',
+          false // 默认朝左
+        );
+      } else if (entityName.includes('red-ribbon-soldier')) {
+        this.characterDrawer.drawEnemy(
+          transform.position.x,
+          transform.position.y,
+          60,
+          90,
+          'red-ribbon-soldier',
+          false // 默认朝左
+        );
+      } else if (entityName.includes('ox-king')) {
+        this.characterDrawer.drawEnemy(
+          transform.position.x,
+          transform.position.y,
+          100,
+          120,
+          'ox-king',
+          false // 默认朝左
+        );
       } else if (entityName.includes('dragon-ball')) {
         this.characterDrawer.drawDragonBall(
           transform.position.x,
@@ -170,6 +197,34 @@ export class RenderSystem extends System {
           transform.position.y,
           40,
           30
+        );
+      } else if (entityName.includes('volcanic-rock')) {
+        this.sceneDrawer.drawVolcanicRock(
+          transform.position.x,
+          transform.position.y,
+          50,
+          50
+        );
+      } else if (entityName.includes('lava-pool')) {
+        this.sceneDrawer.drawLavaPool(
+          transform.position.x,
+          transform.position.y,
+          100,
+          20
+        );
+      } else if (entityName.includes('volcanic-platform')) {
+        this.sceneDrawer.drawVolcanicPlatform(
+          transform.position.x,
+          transform.position.y,
+          150,
+          20
+        );
+      } else if (entityName.includes('fire-pillar')) {
+        this.sceneDrawer.drawFirePillar(
+          transform.position.x,
+          transform.position.y,
+          30,
+          80
         );
       } else if (entityName.includes('platform')) {
         const width = entityName.includes('platform-') ? 150 : 120;
