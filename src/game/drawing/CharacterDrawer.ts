@@ -383,6 +383,155 @@ export class CharacterDrawer {
         this.ctx.fillStyle = '#8B4513';
         this.ctx.fillRect(width * 0.85, height * 0.5, width * 0.15, height * 0.05);
         break;
+        
+      case 'desert-bandit':
+        // 绘制沙漠土匪
+        // 1. 绘制身体
+        this.ctx.fillStyle = '#8B4513';
+        this.ctx.fillRect(width * 0.25, height * 0.4, width * 0.5, height * 0.4);
+        
+        // 2. 绘制腿部
+        this.ctx.fillRect(width * 0.3, height * 0.8, width * 0.15, height * 0.2);
+        this.ctx.fillRect(width * 0.55, height * 0.8, width * 0.15, height * 0.2);
+        
+        // 3. 绘制手臂
+        this.ctx.fillRect(width * 0.15, height * 0.45, width * 0.1, height * 0.3);
+        this.ctx.fillRect(width * 0.75, height * 0.45, width * 0.1, height * 0.3);
+        
+        // 4. 绘制头部
+        this.ctx.fillStyle = '#FFDAB9';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.3, width * 0.3, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 5. 绘制沙漠头巾和护目镜
+        this.ctx.fillStyle = '#A0522D';
+        this.ctx.fillRect(width * 0.1, height * 0.15, width * 0.8, height * 0.25); // 头巾
+        
+        this.ctx.fillStyle = '#000';
+        this.ctx.fillRect(width * 0.3, height * 0.22, width * 0.15, height * 0.08); // 左眼护目镜
+        this.ctx.fillRect(width * 0.55, height * 0.22, width * 0.15, height * 0.08); // 右眼护目镜
+        
+        // 6. 绘制面部特征
+        this.ctx.fillStyle = '#FFDAB9';
+        this.ctx.fillRect(width * 0.35, height * 0.3, width * 0.3, height * 0.1); // 嘴巴和下巴
+        
+        // 7. 绘制服装和武器
+        this.ctx.fillStyle = '#CD853F';
+        this.ctx.fillRect(width * 0.25, height * 0.4, width * 0.5, height * 0.4); // 沙漠长袍
+        
+        // 武器（弯刀）
+        this.ctx.fillStyle = '#C0C0C0';
+        this.ctx.beginPath();
+        this.ctx.moveTo(width * 0.8, height * 0.5);
+        this.ctx.lineTo(width * 1.0, height * 0.45);
+        this.ctx.lineTo(width * 0.95, height * 0.55);
+        this.ctx.closePath();
+        this.ctx.fill();
+        break;
+        
+      case 'sandworm':
+        // 绘制沙虫
+        // 1. 绘制沙虫身体
+        this.ctx.fillStyle = '#8B4513';
+        this.ctx.beginPath();
+        this.ctx.ellipse(width / 2, height / 2, width * 0.4, height * 0.4, 0, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 2. 绘制沙虫的环节
+        this.ctx.strokeStyle = '#A0522D';
+        this.ctx.lineWidth = 2;
+        for (let i = 0; i < width; i += 10) {
+          this.ctx.beginPath();
+          this.ctx.arc(width / 2, height / 2, width * 0.4 - i * 0.03, 0, Math.PI * 2);
+          this.ctx.stroke();
+        }
+        
+        // 3. 绘制沙虫头部
+        this.ctx.fillStyle = '#A0522D';
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.1, height / 2, width * 0.15, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 4. 绘制沙虫的眼睛
+        this.ctx.fillStyle = '#333';
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.05, height * 0.4, width * 0.05, 0, Math.PI * 2);
+        this.ctx.arc(width * 0.05, height * 0.6, width * 0.05, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 5. 绘制沙虫的嘴巴
+        this.ctx.fillStyle = '#FF0000';
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.1, height / 2, width * 0.1, 0, Math.PI);
+        this.ctx.fill();
+        
+        // 6. 绘制沙虫的牙齿
+        this.ctx.fillStyle = '#FFF';
+        for (let i = 0; i < 5; i++) {
+          const angle = Math.PI / 6 * (i - 2);
+          const x = width * 0.1 + Math.cos(angle) * width * 0.1;
+          const y = height / 2 + Math.sin(angle) * width * 0.1;
+          this.ctx.fillRect(x - 2, y, 4, 8);
+        }
+        break;
+        
+      case 'yamcha':
+        // 绘制雅木茶
+        // 1. 绘制身体
+        this.ctx.fillStyle = '#4682B4';
+        this.ctx.fillRect(width * 0.25, height * 0.4, width * 0.5, height * 0.4);
+        
+        // 2. 绘制腿部
+        this.ctx.fillRect(width * 0.3, height * 0.8, width * 0.15, height * 0.2);
+        this.ctx.fillRect(width * 0.55, height * 0.8, width * 0.15, height * 0.2);
+        
+        // 3. 绘制手臂
+        this.ctx.fillRect(width * 0.15, height * 0.45, width * 0.1, height * 0.3);
+        this.ctx.fillRect(width * 0.75, height * 0.45, width * 0.1, height * 0.3);
+        
+        // 4. 绘制头部
+        this.ctx.fillStyle = '#FFDAB9';
+        this.ctx.beginPath();
+        this.ctx.arc(width / 2, height * 0.3, width * 0.3, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 5. 绘制头发
+        this.ctx.fillStyle = '#000';
+        this.ctx.beginPath();
+        this.ctx.moveTo(width * 0.1, height * 0.2);
+        this.ctx.lineTo(width * 0.1, height * 0.1);
+        this.ctx.lineTo(width * 0.3, height * 0.15);
+        this.ctx.lineTo(width * 0.5, height * 0.05);
+        this.ctx.lineTo(width * 0.7, height * 0.15);
+        this.ctx.lineTo(width * 0.9, height * 0.1);
+        this.ctx.lineTo(width * 0.9, height * 0.2);
+        this.ctx.closePath();
+        this.ctx.fill();
+        
+        // 6. 绘制面部特征
+        // 眼睛
+        this.ctx.fillStyle = '#333';
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.4, height * 0.25, width * 0.05, 0, Math.PI * 2);
+        this.ctx.arc(width * 0.6, height * 0.25, width * 0.05, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 嘴巴
+        this.ctx.strokeStyle = '#333';
+        this.ctx.lineWidth = 2;
+        this.ctx.beginPath();
+        this.ctx.moveTo(width * 0.45, height * 0.35);
+        this.ctx.lineTo(width * 0.55, height * 0.35);
+        this.ctx.stroke();
+        
+        // 7. 绘制服装
+        this.ctx.fillStyle = '#000';
+        this.ctx.fillRect(width * 0.25, height * 0.4, width * 0.5, height * 0.05); // 衣领
+        
+        this.ctx.fillStyle = '#4169E1';
+        this.ctx.fillRect(width * 0.35, height * 0.45, width * 0.3, height * 0.1); // 上衣前襟
+        break;
     }
     
     // 恢复上下文状态

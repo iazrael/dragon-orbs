@@ -233,6 +233,71 @@ export class SceneDrawer {
     this.ctx.fillRect(x, y, width, height * 0.2);
   }
   
+  // 绘制沙丘
+  drawDune(x: number, y: number, width: number, height: number): void {
+    this.ctx.fillStyle = '#F4A460';
+    this.ctx.beginPath();
+    this.ctx.moveTo(x, y);
+    this.ctx.quadraticCurveTo(x + width / 2, y - height * 2, x + width, y);
+    this.ctx.closePath();
+    this.ctx.fill();
+    
+    // 添加沙丘纹理
+    this.ctx.fillStyle = '#DEB887';
+    for (let i = 0; i < 5; i++) {
+      const offsetX = (Math.random() - 0.5) * width * 0.8;
+      const offsetY = (Math.random() - 0.5) * height;
+      this.ctx.beginPath();
+      this.ctx.arc(x + width / 2 + offsetX, y + offsetY, width * 0.1, 0, Math.PI * 2);
+      this.ctx.fill();
+    }
+  }
+  
+  // 绘制仙人掌
+  drawCactus(x: number, y: number, width: number, height: number): void {
+    // 绘制仙人掌主体
+    this.ctx.fillStyle = '#228B22';
+    this.ctx.fillRect(x + width * 0.3, y, width * 0.4, height);
+    
+    // 绘制仙人掌的刺
+    this.ctx.fillStyle = '#006400';
+    for (let i = 0; i < height; i += 10) {
+      // 左侧刺
+      this.ctx.fillRect(x + width * 0.2, y + i, width * 0.1, 3);
+      // 右侧刺
+      this.ctx.fillRect(x + width * 0.7, y + i, width * 0.1, 3);
+    }
+    
+    // 绘制仙人掌顶部
+    this.ctx.beginPath();
+    this.ctx.moveTo(x + width * 0.3, y);
+    this.ctx.lineTo(x, y - height * 0.2);
+    this.ctx.lineTo(x + width, y - height * 0.2);
+    this.ctx.lineTo(x + width * 0.7, y);
+    this.ctx.closePath();
+    this.ctx.fill();
+  }
+  
+  // 绘制岩石
+  drawRock(x: number, y: number, width: number, height: number): void {
+    this.ctx.fillStyle = '#696969';
+    this.ctx.beginPath();
+    this.ctx.moveTo(x + width * 0.5, y);
+    this.ctx.lineTo(x + width * 0.8, y + height * 0.3);
+    this.ctx.lineTo(x + width, y + height);
+    this.ctx.lineTo(x, y + height);
+    this.ctx.lineTo(x + width * 0.2, y + height * 0.3);
+    this.ctx.closePath();
+    this.ctx.fill();
+    
+    // 添加岩石纹理
+    this.ctx.fillStyle = '#555555';
+    this.ctx.beginPath();
+    this.ctx.arc(x + width * 0.3, y + height * 0.5, width * 0.1, 0, Math.PI * 2);
+    this.ctx.arc(x + width * 0.7, y + height * 0.6, width * 0.1, 0, Math.PI * 2);
+    this.ctx.fill();
+  }
+  
   // 绘制障碍物
   drawObstacle(x: number, y: number, width: number, height: number, type: string = 'rock'): void {
     switch (type) {

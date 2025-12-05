@@ -77,6 +77,15 @@ export class RenderSystem extends System {
           96,
           false // 默认朝左
         );
+      } else if (entityName.includes('yamcha')) {
+        this.characterDrawer.drawEnemy(
+          transform.position.x,
+          transform.position.y,
+          70,
+          100,
+          'yamcha',
+          false // 默认朝左
+        );
       } else if (entityName.includes('beast')) {
         this.characterDrawer.drawEnemy(
           transform.position.x,
@@ -95,6 +104,24 @@ export class RenderSystem extends System {
           'goon',
           false // 默认朝左
         );
+      } else if (entityName.includes('desert-bandit')) {
+        this.characterDrawer.drawEnemy(
+          transform.position.x,
+          transform.position.y,
+          60,
+          90,
+          'desert-bandit',
+          false // 默认朝左
+        );
+      } else if (entityName.includes('sandworm')) {
+        this.characterDrawer.drawEnemy(
+          transform.position.x,
+          transform.position.y,
+          80,
+          40,
+          'sandworm',
+          false // 默认朝左
+        );
       } else if (entityName.includes('dragon-ball')) {
         this.characterDrawer.drawDragonBall(
           transform.position.x,
@@ -106,7 +133,7 @@ export class RenderSystem extends System {
         this.sceneDrawer.drawGround(
           transform.position.x,
           transform.position.y,
-          800,
+          1500,
           50
         );
       } else if (entityName.includes('tree')) {
@@ -118,6 +145,27 @@ export class RenderSystem extends System {
         );
       } else if (entityName.includes('stone')) {
         this.sceneDrawer.drawStone(
+          transform.position.x,
+          transform.position.y,
+          40,
+          30
+        );
+      } else if (entityName.includes('dune')) {
+        this.sceneDrawer.drawDune(
+          transform.position.x,
+          transform.position.y,
+          100,
+          50
+        );
+      } else if (entityName.includes('cactus')) {
+        this.sceneDrawer.drawCactus(
+          transform.position.x,
+          transform.position.y,
+          30,
+          80
+        );
+      } else if (entityName.includes('rock')) {
+        this.sceneDrawer.drawRock(
           transform.position.x,
           transform.position.y,
           40,
